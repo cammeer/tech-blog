@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post } = require("../models/");
+const { Post, User } = require("../models/");
 const withAuth = require("../utils/auth");
 
 router.get("/", withAuth, async(req, res) => {
@@ -35,7 +35,7 @@ router.get("/new", withAuth, (req, res) => {
 router.get("/edit/:id", withAuth, async(req, res) => {
     try {
         // what should we pass here? we need to get some data passed via the request body
-        const postData = await Post.findByPk(req.params.include);
+        const postData = await Post.findOne(req.params.id);
 
         if (postData) {
             // serializing the data
