@@ -23,7 +23,7 @@ User.init({
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [],
+                len: [10],
             },
         },
     },
